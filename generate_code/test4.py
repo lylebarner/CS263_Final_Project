@@ -13,6 +13,10 @@ NEWS_SOURCES = [
     "https://news.yahoo.com/tagged/climate-change"
 ]
 
+user_input = input("Enter filename: ")
+with open(user_input, 'r') as file:  # Vulnerable to directory traversal
+    content = file.read()
+
 async def fetch_html(session, url):
     async with session.get(url) as response:
         return await response.text()
